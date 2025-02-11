@@ -35,6 +35,7 @@ public class Main {
         int isChild = InputValidator.getValidIntInput("\n어린이인가요? (Yes: 1, No: 0) ", scanner);
         if (isChild == 1) {
             laneAllocator.assignChildLane(person, classLanes);
+            tempSensorThread.interrupt(); // 프로그램 종료 전 스레드 종료
             return;
         }
 
@@ -43,6 +44,7 @@ public class Main {
 
         if (choice == 1){ // 강습 레인 배정
             laneAllocator.assignClassLane(person, classLanes);
+            tempSensorThread.interrupt(); // 프로그램 종료 전 스레드 종료
             return;
         }
 
