@@ -4,12 +4,16 @@ import model.*;
 import service.LaneAllocator;
 import util.ScriptPrinter;
 import util.InputValidator;
+import sensor.TempSensorThread;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Thread tempSensorThread = new Thread(new TempSensorThread(25.0));
+        tempSensorThread.start();
+
         Scanner scanner = new Scanner(System.in);
         Pool pool = new Pool(6, 22);  // 개장 시간: 6시, 폐장 시간: 22시
         LaneAllocator laneAllocator = new LaneAllocator(pool);
@@ -46,6 +50,7 @@ public class Main {
         int useFin = InputValidator.getValidIntInput("\n핀을 사용하시겠습니까? (Yes: 1, No: 0) ", scanner);
         laneAllocator.assignFreeLane(person, freeLanes, useFin);
 
+        tempSensorThread.interrupt(); //프로그램 종료 전 스레드 종료
         scanner.close();
     }
 }
