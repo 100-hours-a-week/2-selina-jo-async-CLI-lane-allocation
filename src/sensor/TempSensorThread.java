@@ -18,7 +18,7 @@ public class TempSensorThread implements Runnable {
                 break;
             }
 
-            System.out.printf("\n[수온 센서] 현재 수온: %.1f°C%n", temp);
+            System.out.printf("\n \uD83C\uDF21\uFE0F [수온 센서] 현재 수온: %.1f°C%n", temp);
 
             //이전 온도에서 무작위로 0.1도 상승하거나 하강
             if (random.nextBoolean()){
