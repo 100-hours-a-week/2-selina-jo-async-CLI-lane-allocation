@@ -11,9 +11,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Thread tempSensorThread = new Thread(new TempSensorThread(25.0));
-        tempSensorThread.start();
-
         Scanner scanner = new Scanner(System.in);
         Pool pool = new Pool(6, 22);  // 개장 시간: 6시, 폐장 시간: 22시
         LaneAllocator laneAllocator = new LaneAllocator(pool);
@@ -25,6 +22,10 @@ public class Main {
         scriptPrinter.printStartScript();
         scriptPrinter.printLaneList(classLanes, freeLanes);
 
+        // 수온 센서 작동 시작
+        Thread tempSensorThread = new Thread(new TempSensorThread(25.0));
+        tempSensorThread.start();
+
         // 1. 이용 시간 입력
         InputValidator.getValidTimeInput(scanner, pool);
 
@@ -35,6 +36,7 @@ public class Main {
         int isChild = InputValidator.getValidIntInput("\n어린이인가요? (Yes: 1, No: 0) ", scanner);
         if (isChild == 1) {
             laneAllocator.assignChildLane(person, classLanes);
+            tempSensorThread.interrupt(); // 프로그램 종료 전 스레드 종료
             return;
         }
 
@@ -43,6 +45,7 @@ public class Main {
 
         if (choice == 1){ // 강습 레인 배정
             laneAllocator.assignClassLane(person, classLanes);
+            tempSensorThread.interrupt(); // 프로그램 종료 전 스레드 종료
             return;
         }
 
