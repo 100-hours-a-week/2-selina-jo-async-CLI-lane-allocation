@@ -126,7 +126,7 @@ Chunsik님은 4번 레인(상급)에 배정되었습니다.
 ```
 
 ### 📽️ 시연 영상
-![Image](https://github.com/user-attachments/assets/cdb9eb84-ae50-474b-9714-8ce8263f63e9)
+![Image](https://github.com/user-attachments/assets/20436f6b-0405-4261-a585-5084ee770453)
 
 ### 💻 개발 환경
 - 언어: JAVA21
