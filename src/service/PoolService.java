@@ -55,8 +55,8 @@ public class PoolService {
         }
     }
 
-    public void assignFreeLane(Person person, List<FreeLane> freeLanes, boolean useFin){
-        if (useFin){
+    public void assignFreeLane(Person person, List<FreeLane> freeLanes, int useFin){
+        if (useFin == 1){
             for (FreeLane lane : freeLanes) {
                 if (lane.checkIfUseFin()){
                     lane.printResult(person);
