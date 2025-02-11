@@ -17,13 +17,16 @@ public class TempSensorThread implements Runnable {
             if(Thread.interrupted()){
                 break;
             }
+
+            System.out.printf("\n[수온 센서] 현재 수온: %.1f°C%n", temp);
+
             //이전 온도에서 무작위로 0.1도 상승하거나 하강
             if (random.nextBoolean()){
                 temp += 0.1;
             }else{
                 temp -= 0.1;
             }
-            System.out.printf("\n[수온 센서] 현재 수온: %.1f°C%n", temp);
+
             try{
                 Thread.sleep(5000); //5초마다 갱신
             } catch(InterruptedException e){

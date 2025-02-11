@@ -50,7 +50,7 @@ public class Main {
         int useFin = InputValidator.getValidIntInput("\n핀을 사용하시겠습니까? (Yes: 1, No: 0) ", scanner);
         laneAllocator.assignFreeLane(person, freeLanes, useFin);
 
-        tempSensorThread.interrupt(); //프로그램 종료 전 스레드 종료
+        tempSensorThread.interrupt(); // 프로그램 종료 전 스레드 종료
         scanner.close();
     }
 }
